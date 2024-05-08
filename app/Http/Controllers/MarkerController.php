@@ -11,13 +11,14 @@ class MarkerController extends Controller
     public function index()
     {
         $googlemaps = Marker::all();
-        return view('googlemaps.maps', compact('googlemaps'));
+        return view('googlemaps.index', compact('googlemaps'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
         return view('googlemaps.create');
     }
+    
 
     public function store(Request $request)
     {
@@ -30,7 +31,7 @@ class MarkerController extends Controller
 
         Marker::create($validatedData);
 
-        return redirect()->route('googlemaps.maps')
+        return redirect()->route('googlemaps.index')
             ->with('success', 'Marker updated successfully');
     }
     public function edit($id)
@@ -60,7 +61,7 @@ class MarkerController extends Controller
 
         $googlemaps->update($validatedData);
 
-        return redirect()->route('googlemaps.maps')
+        return redirect()->route('googlemaps.index')
             ->with('success', 'Marker updated successfully');
     }
 
@@ -69,7 +70,7 @@ class MarkerController extends Controller
         $googlemaps = Marker::find($id);
         if ($googlemaps) {
             $googlemaps->delete();
-            return redirect()->route('googlemaps.maps')
+            return redirect()->route('googlemaps.index')
                 ->with('success', 'Marker deleted successfully');
         } else {
             return redirect()->back()->withErrors('Marker not found.');

@@ -21,7 +21,7 @@
                     <x-nav-link :href="route('chirps.index')" :active="request()->routeIs('chirps.index')">
                         {{ __('Blog') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('googlemaps.maps')" :active="request()->routeIs('googlemaps.maps')">
+                    <x-nav-link :href="route('googlemaps.index')" :active="request()->routeIs('googlemaps.index')">
                         {{ __('Markers') }}
                     </x-nav-link>
                     <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
@@ -92,7 +92,7 @@
             <x-responsive-nav-link :href="route('chirps.index')" :active="request()->routeIs('chirps.index')">
                 {{ __('Blog') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('googlemaps.maps')" :active="request()->routeIs('googlemaps.maps')">
+            <x-responsive-nav-link :href="route('googlemaps.index')" :active="request()->routeIs('googlemaps.index')">
                 {{ __('Markers') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">

@@ -38,12 +38,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/googlemaps/maps', [MarkerController::class, 'index'])->name('googlemaps.maps');
+Route::get('/googlemaps', [MarkerController::class, 'index'])->name('googlemaps.index');
 Route::get('/googlemaps/create', [MarkerController::class, 'create'])->name('googlemaps.create');
-Route::post('/googlemaps', [MarkerController::class, 'store'])->name('googlemaps.store');
+Route::post('/googlemaps', [MarkerController::class, 'store'])->name('googlemaps.store'); 
 Route::get('/googlemaps/{id}/edit', [MarkerController::class, 'edit'])->name('googlemaps.edit');
 Route::put('/googlemaps/{id}', [MarkerController::class, 'update'])->name('googlemaps.update');
 Route::delete('/googlemaps/{id}', [MarkerController::class, 'destroy'])->name('googlemaps.destroy');
+
 
 Route::resource('chirps', ChirpController::class)
     ->only(['index', 'store', 'edit', 'update', 'destroy'])
