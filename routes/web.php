@@ -64,15 +64,11 @@ Route::get('/cart', [ProductController::class, 'cart'])->name('cart');
 Route::post('/update-cart/{id}',[ProductController::class, 'updateCart'])->name('update.cart');
 Route::get('/remove-from-cart/{id}', [ProductController::class, 'removeFromCart'])->name('remove.from.cart');
 
-//Route::post('/checkout', [OrderController::class, 'handleCheckout'])->name('checkout');
-//Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout.show');
-//Route::post('/handle-checkout', [OrderController::class, 'handleCheckout'])->name('handle.checkout');
-
-Route::controller(CheckoutController::class)->middleware(['auth', 'verified'])->name('checkout.')->group(function () {
-    Route::get('/checkout', 'index')->name('index');
-    Route::post('/checkout/sessions', 'checkout')->name('checkout');
-    Route::get('/success', 'success')->name('success');
-    Route::get('/cancel', 'cancel')->name('cancel');
+Route::middleware(['auth', 'verified'])->prefix('checkout')->name('checkout.')->group(function () {
+    Route::get('/', [CheckoutController::class, 'index'])->name('index');
+    Route::post('/sessions', [CheckoutController::class, 'checkout'])->name('checkout');
+    Route::get('/success', [CheckoutController::class, 'success'])->name('success');
+    Route::get('/cancel', [CheckoutController::class, 'cancel'])->name('cancel');
 });
 
 
