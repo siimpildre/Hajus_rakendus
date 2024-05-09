@@ -10,7 +10,7 @@
                 <div class="p-8">
                     <h1>Thanks for your order!</h1>
                     <p>
-                        We appreciate your business! If you have any questions, please email
+                        We appreciate your business! If you have any questions, don't...
                     </p>
                 </div>
             </div>

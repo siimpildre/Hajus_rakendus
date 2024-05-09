@@ -6,7 +6,6 @@ use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\WeatherController;
 use App\Http\Controllers\MarkerController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CheckoutController;
 use GuzzleHttp\Psr7\Request;
@@ -70,6 +69,5 @@ Route::middleware(['auth', 'verified'])->prefix('checkout')->name('checkout.')->
     Route::get('/success', [CheckoutController::class, 'success'])->name('success');
     Route::get('/cancel', [CheckoutController::class, 'cancel'])->name('cancel');
 });
-
 
 require __DIR__ . '/auth.php';
