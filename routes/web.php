@@ -58,7 +58,6 @@ Route::get('/products', [ProductController::class, 'index'])->name('products.ind
 
 Route::get('/add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add.to.cart');
 
-Route::get('/api/records', [BasketballController::class, 'records'])->name('records');
 Route::get('/api/movies', [BasketballController::class, 'movies'])->name('movies');
 Route::get('/api/makeup', [BasketballController::class, 'makeup'])->name('makeup');
 
