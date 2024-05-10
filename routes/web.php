@@ -53,7 +53,6 @@ Route::post('/comments', [CommentController::class, 'store'])->name('comments.st
 Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
 Route::resource('/products', ProductController::class);
-Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 
 //Route::get('/products', [ProductController::class, 'products.index']);

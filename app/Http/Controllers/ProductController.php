@@ -10,6 +10,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
+
         $totalSum = Product::sum('price');  // Calculates the sum of prices for all products
         return view('products.index', compact('products', 'totalSum'));
     }

@@ -14,7 +14,7 @@
                             @foreach(session('cart') as $id => $details)
                                 <?php $total += $details['price'] * $details['quantity']; ?>
                                 <div class="item">
-                                    <img src="{{ asset('images/products/image1.jpg') }}" alt="Product Name" style="width: 100px">
+                                    <img src="{{url('images/products/bg4000.jpg')}}" alt="{{ $details['name'] }}" style="width: 100px">
                                     <p>{{ $details['name'] }}</p>
                                     <p>Price: ${{ number_format($details['price'], 2) }}</p>
                                     <p>Quantity: {{ $details['quantity'] }}</p>

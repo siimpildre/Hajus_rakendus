@@ -13,7 +13,7 @@
         @foreach ($products as $product)
             <tr>
                 <td>{{ $product['title'] }}</td>
-                <td><img src="{{ asset('images/' . $product['image']) }}" alt="{{ $product['title'] }}" height="100"></td>
+                <td><img src="{{url('images/products/bg2000.jpg')}}" alt="{{ $product['name'] }}" height="100"></td>
                 <td>{{ $product['description'] }}</td>
                 <td>${{ $product['price'] }}</td>
                 <td>{{ $product['brand'] }}</td>

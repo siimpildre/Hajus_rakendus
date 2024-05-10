@@ -12,6 +12,7 @@
                         <thead class="text-xs text-gray-500 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-300">
                             <tr>
                                 <th scope="col" class="px-6 py-3">Product</th>
+                                <th></th>
                                 <th scope="col" class="px-6 py-3">Description</th>
                                 <th scope="col" class="px-6 py-3">Price</th>
                                 <th scope="col" class="px-6 py-3"></th>
@@ -21,9 +22,9 @@
                             @foreach ($products as $product)
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                     <td class="px-6 py-4">
-                                        <img src="{{ asset('images/products/image1.jpg') }}" alt="Product Name" style="width: 100px">
                                         {{ $product->name }}
                                     </td>
+                                    <td><img class="h-16" src="{{url('images/products/'. $product->image)}}" alt="{{ $product['name'] }}"></td>
                                     <td class="px-6 py-4">
                                         {{ $product->description }}
                                     </td>
