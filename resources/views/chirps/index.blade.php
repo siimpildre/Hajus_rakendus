@@ -85,13 +85,15 @@
                                         <div class="flex align-center gap-2 m-2">
                                             <!-- Display comment content -->
                                             <span class="text-gray-600">{{ $comment->user->name }}:</span> {{ $comment->comment }}
-                                            <form method="POST" action="{{ route('comments.destroy', $comment) }}">
-                                                @csrf
-                                                @method('delete')
-                                                <x-secondary-button :href="route('comments.destroy', $chirp)" onclick="event.preventDefault(); this.closest('form').submit();">
-                                                    {{ __('Delete') }}
-                                                </x-secondary-button>
-                                            </form>
+                                            @if (auth()->user()->isAdmin() || auth()->user()->id === $comment->user_id)
+                                                <form method="POST" action="{{ route('comments.destroy', $comment) }}">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <x-secondary-button onclick="event.preventDefault(); this.closest('form').submit();">
+                                                        {{ __('Delete') }}
+                                                    </x-secondary-button>
+                                                </form>
+                                            @endif
                                         </div>
                                     @endforeach
                                 </div>

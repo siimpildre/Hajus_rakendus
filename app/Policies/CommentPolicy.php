@@ -43,10 +43,10 @@ class CommentPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Comment $comment): bool
+    public function delete(User $user, Comment $comment)
     {
-        return $this->update($user, $comment);
-    }
+        return $user->isAdmin() || $user->id === $comment->user_id;
+    }    
 
     /**
      * Determine whether the user can restore the model.

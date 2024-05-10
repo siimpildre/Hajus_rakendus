@@ -71,8 +71,11 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        Gate::authorize('delete', $comment);
+        $this->authorize('delete', $comment);
+        
+        // Delete the comment
         $comment->delete();
-        return back()->with('success', 'Comment deleted successfully!');
+    
+        return redirect()->back()->with('success', 'Comment deleted successfully');
     }
 }
