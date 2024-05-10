@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\MakeUpController;
+use App\Http\Controllers\BasketballController;
 use App\Models\MakeUp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,12 +22,11 @@ use Illuminate\Support\Facades\Cache;
 });*/
 
 
-Route::get('/makeup', [MakeUpController::class, 'index']);
-
-Route::get('/makeup', function (Request $request) {
-
-        if ($limit = request('limit')) {
-                return Cache::remember('my-request' . $limit, now()->addHour(), fn () => MakeUp::paginate($limit));
+Route::get('/api/makeup', function (Request $request) {
+        if ($limit = $request->query('limit')) {
+            return Cache::remember('makeup-' . $limit, now()->addHour(), function () use ($limit) {
+                return MakeUp::paginate($limit);
+            });
         }
         return MakeUp::all();
-});
+    });

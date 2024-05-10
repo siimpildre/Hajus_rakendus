@@ -8,8 +8,10 @@ use App\Http\Controllers\MarkerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\BasketballController;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cache;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +47,6 @@ Route::get('/googlemaps/{id}/edit', [MarkerController::class, 'edit'])->name('go
 Route::put('/googlemaps/{id}', [MarkerController::class, 'update'])->name('googlemaps.update');
 Route::delete('/googlemaps/{id}', [MarkerController::class, 'destroy'])->name('googlemaps.destroy');
 
-
 Route::resource('chirps', ChirpController::class)
     ->only(['index', 'store', 'edit', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
@@ -55,8 +56,11 @@ Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->nam
 Route::resource('/products', ProductController::class);
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 
-//Route::get('/products', [ProductController::class, 'products.index']);
 Route::get('/add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add.to.cart');
+
+Route::get('/api/records', [BasketballController::class, 'records'])->name('records');
+Route::get('/api/movies', [BasketballController::class, 'movies'])->name('movies');
+Route::get('/api/makeup', [BasketballController::class, 'makeup'])->name('makeup');
 
 Route::get('/cart', [ProductController::class, 'cart'])->name('cart');
 Route::post('/update-cart/{id}',[ProductController::class, 'updateCart'])->name('update.cart');
